@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Marquee your page</title>
+
+  <style type="text/css">
+    body {
+      margin: 0px;
+      padding: 0px;
+      overflow: hidden;
+      font-family: Verdana;
+      font-size: 18px;
+    }
+
+    #iframe {
+      overflow: hidden;
+      height:100%;
+      width:100%;
+    }
+
+    #start {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      vertical-align: middle;
+      position: absolute;
+      background-color: #fff;
+    }
+
+    #start input {
+      height: 40px;
+      border: 1px solid #7dc676;
+      padding: 0 10px;
+      background-color: #fff;
+      font-family: Verdana;
+      font-size: 18px;
+    }
+
+    #start-url {
+      width: 500px;
+    }
+
+    #start-action {
+      cursor: pointer;
+    }
+
+    #shim {
+      height: 50%;
+      margin-top: -40px;
+      width: 100%;
+    }
+
+    #loading {
+      display: none;
+    }
+  </style>
+
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <script>
+  $(function() {
+      var bodyWidth = $(document).width()
+      var bodyHeight = $(document).height()
+      var start = $('#start')
+
+      start
+        .width(bodyWidth)
+        .height(bodyHeight)
+
+      $('#start-action').click(function() {
+        $('#input').hide()
+        $('#loading').show()
+
+        $('body').append(
+          '<marquee height="100%" width="100%" id="marquee" scrollamount="10">' +
+          '  <iframe src="' + $('#start-url').val() + '" frameborder="0" height="100%" width="100%" id="iframe">' +
+          '  </iframe>' +
+          '</marquee>'
+        )
+
+        $('#iframe')
+          .width(bodyWidth)
+          .height(bodyHeight)
+
+        $($('#iframe')[0].contentDocument).ready(function() {
+          setTimeout(function() {
+            start.hide()
+          }, 1200)
+        })
+      })
+  })
+  </script>
+</head>
+<body>
+  <div id="start">
+    <div id="shim"></div>
+    <div id="input">
+      <input type="text" value="http://" id="start-url" />
+      <input type="submit" value="let's do it" id="start-action" />
+    </div>
+    <div id="loading">Get ready for awesome...</div>
+  </div>
+</body>
+</html>
