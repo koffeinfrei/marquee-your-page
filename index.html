@@ -70,6 +70,7 @@
         .width(bodyWidth)
         .height(bodyHeight)
 
+      // start button inserts the marquee and the iframe dynamically
       $('#start-action').click(function() {
         $('#input').hide()
         $('#loading').show()
@@ -81,10 +82,13 @@
           '</marquee>'
         )
 
+        // iframe inside marquee doesn't respond to 100% width/height,
+        // we need to set the actual pixel values
         $('#iframe')
           .width(bodyWidth)
           .height(bodyHeight)
 
+        // wait for iframe to the loaded (and then wait some more)
         $($('#iframe')[0].contentDocument).ready(function() {
           setTimeout(function() {
             start.fadeOut()
