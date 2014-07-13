@@ -56,6 +56,99 @@
     #loading {
       display: none;
     }
+
+    .info {
+      position: relative;
+      width: 550px;
+      margin: 30px auto 0 auto;
+    }
+
+    #toggle-info-action {
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      border: 1px solid #7dc676;
+      border-radius: 20px;
+      height: 40px;
+      line-height: 40px;
+      width: 40px;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    }
+    #toggle-info-action:hover {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+
+    #info-bubble {
+      display: none;
+      border: 1px solid #7dc676;
+      margin: 40px 0 0 0;
+      padding: 15px;
+      position: relative;
+      font-size: 16px;
+    }
+    #info-bubble:before {
+      border-color: #7dc676 transparent;
+      border-style: solid;
+      border-width: 20px 20px 0;
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+      border-width: 0 20px 20px;
+      bottom: auto;
+      left: auto;
+      right: 255px;
+      top: -20px;
+    }
+    #info-bubble:after {
+      border-width: 0 18px 18px;
+      bottom: auto;
+      left: auto;
+      right: 257px;
+      top: -18px;
+      border-color: #fff transparent;
+      border-style: solid;
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+    }
+
+    dl {
+      margin: 0;
+    }
+
+    dt {
+      color: #7dc676;
+    }
+
+    dd {
+      margin: 0 0 5px 0;
+    }
+
+    a {
+      color: #000;
+      outline: 0;
+    }
+    a:visited {
+      color: #000;
+      outline: 0;
+    }
+    a:hover {
+      color: #000;
+      outline: 0;
+      text-decoration: none;
+    }
+    a:focus {
+      outline: 0;
+    }
   </style>
 
   <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -95,6 +188,18 @@
           }, 1200)
         })
       })
+
+      // info bubble
+      $('#toggle-info-action').click(function(e) {
+        e.preventDefault()
+        var infoBubble = $('#info-bubble')
+        if (infoBubble.is(':visible')) {
+          infoBubble.fadeOut()
+        }
+        else {
+          infoBubble.fadeIn()
+        }
+      })
   })
   </script>
 </head>
@@ -104,6 +209,22 @@
     <div id="input">
       <input type="text" value="http://" id="start-url" />
       <input type="submit" value="let's do it" id="start-action" />
+      <div class="info">
+        <p><a href="#" id="toggle-info-action">?</a></p>
+        <div id="info-bubble">
+          <dl>
+            <dt>how you ask?</dt>
+            <dd>this page wraps the content of your page inside a &lt;marquee&gt;.</dd>
+            <dt>why you ask?</dt>
+            <dd>because we should use the marquee element much more often,
+                as we used to do.</dd>
+            <dt>seriously?</dt>
+            <dd>no.</dd>
+            <dt>you want to contribute / view the source code anyway?<dt>
+            <dd>alright, head over to <a href="https://github.com/koffeinfrei/marquee-your-page">github</a>.</dd>
+          </dl>
+        </div>
+      </div>
     </div>
     <div id="loading">Get ready for awesome...</div>
   </div>
