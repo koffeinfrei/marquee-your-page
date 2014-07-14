@@ -175,8 +175,8 @@
         $('#loading').show()
 
         $('body').append(
-          '<marquee height="100%" width="100%" id="marquee" scrollamount="10">' +
-          '  <iframe src="' + $('#start-url').val() + '" frameborder="0" height="100%" width="100%" id="iframe">' +
+          '<marquee id="marquee" scrollamount="10">' +
+          '  <iframe src="' + $('#start-url').val() + '" frameborder="0" id="iframe">' +
           '  </iframe>' +
           '</marquee>'
         )
@@ -184,8 +184,8 @@
         // iframe inside marquee doesn't respond to 100% width/height,
         // we need to set the actual pixel values
         $('#iframe')
-          .width(bodyWidth)
-          .height(bodyHeight)
+          .css('width', bodyWidth + 'px')
+          .css('height', bodyHeight + 'px')
 
         // wait for iframe to the loaded (and then wait some more)
         $($('#iframe')[0].contentDocument).ready(function() {
