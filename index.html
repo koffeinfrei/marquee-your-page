@@ -88,10 +88,11 @@
     #info-bubble {
       display: none;
       border: 1px solid #7dc676;
-      margin: 40px 0 0 0;
+      margin: 25px 0 0 0;
       padding: 15px;
       position: relative;
       font-size: 16px;
+      text-align: left;
     }
     #info-bubble:before {
       border-color: #7dc676 transparent;
@@ -120,6 +121,9 @@
       position: absolute;
       width: 0;
     }
+    #info-bubble p {
+      margin-top: 0;
+    }
 
     dl {
       margin: 0;
@@ -133,7 +137,6 @@
 
     dd {
       margin: 0 0 5px 0;
-      text-align: left;
     }
 
     a {
@@ -215,6 +218,7 @@
       <div class="info">
         <p><a href="#" id="toggle-info-action">?</a></p>
         <div id="info-bubble">
+          <p>This is the future. Make your whole page behave like a live news ticker.</p>
           <dl>
             <dt>how you ask?</dt>
             <dd>this page wraps the content of your page inside a &lt;marquee&gt;.</dd>
